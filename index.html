@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Football Matches</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="">
+              <span class="brandicon fas fa-futbol"></span>
+              <span class="brandname">Football Matches</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="col-md-6">
+        <div class="row container-title">
+          <div class="title-match" id="title-match"></div>
+          <div class="dropdown">
+            <button
+              class="btn btn-primary dropdown-toggle"
+              type="button"
+              id="downLeague"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+            >
+              List League
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLeague">
+              <li><a onclick="loadMatches(2021)">Premier League</a></li>
+              <li><a onclick="loadMatches(2014)">LaLiga Santander</a></li>
+              <li><a onclick="loadMatches(2003)">Eredivisie</a></li>
+              <li><a onclick="loadMatches(2002)">Bundesliga</a></li>
+              <li><a onclick="loadMatches(2015)">Ligue 1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="center">
+          <button id="liffLoginBtn" class="btn btn-success btn-small">
+            Log in
+          </button>
+          <button id="liffLogoutBtn" class="btn btn-warning btn-small">
+            Log out
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="liffAppContent" class="panel panel-default">
+          <div class="panel-body">
+            <table>
+              <tr>
+                <th>Profile:</th>
+                <td id="profileUser" class="textLeft"></td>
+              </tr>
+              <tr>
+                <th>OS Version:</th>
+                <td id="OSUser" class="textLeft"></td>
+              </tr>
+              <tr>
+                <th>isInClient:</th>
+                <td id="isClientUser" class="textLeft"></td>
+              </tr>
+              <tr>
+                <th>isLoggedIn:</th>
+                <td id="isLoggedInUser" class="textLeft"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="center">
+          <button id="openWindowBtn" class="btn btn-success btn-small">
+            Open External Window
+          </button>
+          <button id="closeWindowBtn" class="btn btn-danger btn-small">
+            Close App
+          </button>
+        </div>
+      </div>
+      <div id="body-content" class="row"></div>
+    </div>
+  </body>
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  <script src="js/matches-config.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      loadMatches(2021);
+    });
+  </script>
+</html>

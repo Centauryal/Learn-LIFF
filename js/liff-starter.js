@@ -118,7 +118,7 @@ function registerButtonHandlers() {
     .getElementById("openWindowBtn")
     .addEventListener("click", function() {
       liff.openWindow({
-        url: "https://catatanliffv2.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
+        url: "https://leaguefootball.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
         external: true
       });
     });

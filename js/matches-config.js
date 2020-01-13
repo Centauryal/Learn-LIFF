@@ -100,15 +100,17 @@ async function loadMatches(leagueId) {
 
     matchLeague = await getMatches(leagueId, dateNow, dateTo);
     matchLeague.matches.forEach(function(match) {
+      home = match.homeTeam.name;
+      away = match.awayTeam.name;
       html += `
         <div class="col-md-6">
          <div class="panel panel-match panel-default">
-            <div class="panel-body card-match" onclick="sendMatches(match.homeTeam.name, match.awayTeam.name)">
+            <div class="panel-body card-match" onclick="sendMatches(home, away)">
                 <span>
                     <p class="name-match truncate">
-                        ${match.homeTeam.name}<br>
+                        ${home}<br>
                         vs<br>
-                        ${match.awayTeam.name}<br>
+                        ${away}<br>
                     </p>
                     <p class="time-match">
                         ${new Date(match.utcDate).toString().substring(0, 21)}

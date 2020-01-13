@@ -86,6 +86,7 @@ a:hover {
 
 .card-match {
   text-align: center;
+  cursor: pointer;
 }
 
 .title-match {

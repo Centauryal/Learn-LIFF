@@ -103,7 +103,7 @@ async function loadMatches(leagueId) {
       html += `
         <div class="col-md-6">
          <div class="panel panel-match panel-default">
-            <div class="panel-body card-match">
+            <div class="panel-body card-match" onclick="sendMatches(match.homeTeam.name, match.awayTeam.name)">
                 <span>
                     <p class="name-match truncate">
                         ${match.homeTeam.name}<br>
@@ -122,6 +122,22 @@ async function loadMatches(leagueId) {
 
     elmMatches.innerHTML = html;
   }
+}
+
+function sendMatches(home, away) {
+  liff
+    .sendMessages([
+      {
+        type: "text",
+        text: home + "" + "vs" + "" + away
+      }
+    ])
+    .then(function() {
+      alert("Schedule has been sent");
+    })
+    .catch(function(e) {
+      alert("Error schedule");
+    });
 }
 
 $(".dropdown-menu li a").click(function() {

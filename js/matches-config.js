@@ -125,19 +125,23 @@ async function loadMatches(leagueId) {
 }
 
 function sendMatches(home, away) {
-  liff
-    .sendMessages([
-      {
-        type: "text",
-        text: home + "" + "vs" + "" + away
-      }
-    ])
-    .then(function() {
-      alert("Schedule has been sent");
-    })
-    .catch(function(e) {
-      alert("Error schedule");
-    });
+  if (!liff.isInClient()) {
+    sendAlertIfNotInClient();
+  } else {
+    liff
+      .sendMessages([
+        {
+          type: "text",
+          text: home + "" + "vs" + "" + away
+        }
+      ])
+      .then(function() {
+        alert("Schedule has been sent");
+      })
+      .catch(function(e) {
+        alert("Error schedule");
+      });
+  }
 }
 
 $(".dropdown-menu li a").click(function() {

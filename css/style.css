@@ -72,6 +72,12 @@ a:hover {
   text-align: center;
 }
 
+.note-match {
+  font-size: 12px;
+  font-style: italic;
+  color: #000000;
+}
+
 .container-title {
   margin: auto;
   width: 50%;

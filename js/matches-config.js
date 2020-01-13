@@ -102,10 +102,11 @@ async function loadMatches(leagueId) {
     matchLeague.matches.forEach(function(match) {
       home = match.homeTeam.name;
       away = match.awayTeam.name;
+      watch = new Date(match.utcDate).toString().substring(0, 21);
       html += `
         <div class="col-md-6">
          <div class="panel panel-match panel-default">
-            <div class="panel-body card-match" onclick="sendMatches(home, away)">
+            <div class="panel-body card-match" onclick="sendMatches(home, away, watch)">
                 <span>
                     <p class="name-match truncate">
                         ${home}<br>
@@ -113,7 +114,7 @@ async function loadMatches(leagueId) {
                         ${away}<br>
                     </p>
                     <p class="time-match">
-                        ${new Date(match.utcDate).toString().substring(0, 21)}
+                        ${watch}
                     </p>
                 </span>
             </div>
@@ -126,7 +127,7 @@ async function loadMatches(leagueId) {
   }
 }
 
-function sendMatches(home, away) {
+function sendMatches(home, away, watch) {
   if (!liff.isInClient()) {
     sendAlertIfNotInClient();
   } else {
@@ -134,7 +135,7 @@ function sendMatches(home, away) {
       .sendMessages([
         {
           type: "text",
-          text: home + "" + "vs" + "" + away
+          text: home + " " + "vs" + " " + away + ", " + watch
         }
       ])
       .then(function() {

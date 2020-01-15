@@ -100,24 +100,26 @@ async function loadMatches(leagueId) {
 
     matchLeague = await getMatches(leagueId, dateNow, dateTo);
     matchLeague.matches.forEach(function(match) {
-      home = match.homeTeam.name;
-      away = match.awayTeam.name;
-      watch = new Date(match.utcDate).toString().substring(0, 21);
+      let home = match.homeTeam.name;
+      let away = match.awayTeam.name;
+      let time = new Date(match.utcDate).toString().substring(0, 21);
       html += `
         <div class="col-md-6">
          <div class="panel panel-match panel-default">
-            <div class="panel-body card-match" onclick="sendMatches(home, away, watch)">
-                <span>
-                    <p class="name-match truncate">
-                        ${home}<br>
-                        vs<br>
-                        ${away}<br>
-                    </p>
-                    <p class="time-match">
-                        ${watch}
-                    </p>
-                </span>
-            </div>
+            <a onclick="sendMatches('${home}', '${away}', '${time}')">
+              <div class="panel-body card-match">
+                  <span>
+                      <p class="name-match truncate">
+                          ${home}<br>
+                          vs<br>
+                          ${away}<br>
+                      </p>
+                      <p class="time-match">
+                          ${time}
+                      </p>
+                  </span>
+              </div>
+            </a>
          </div>
         </div>
         `;
@@ -127,7 +129,7 @@ async function loadMatches(leagueId) {
   }
 }
 
-function sendMatches(home, away, watch) {
+async function sendMatches(home, away, time) {
   if (!liff.isInClient()) {
     sendAlertIfNotInClient();
   } else {
@@ -135,7 +137,7 @@ function sendMatches(home, away, watch) {
       .sendMessages([
         {
           type: "text",
-          text: home + " " + "vs" + " " + away + ", " + watch
+          text: home + " " + "vs" + " " + away + ", " + time
         }
       ])
       .then(function() {

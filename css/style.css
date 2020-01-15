@@ -75,6 +75,7 @@ a:hover {
 .note-match {
   font-size: 12px;
   font-style: italic;
+  font-weight: bold;
   color: #000000;
 }
 

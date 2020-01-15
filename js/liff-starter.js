@@ -16,7 +16,7 @@ window.onload = function() {
       .catch(function(error) {
         document.getElementById("liffAppContent").classList.add("hidden");
         document.getElementById("liffAppLogin").classList.add("hidden");
-        document.getElementById("body-content").classList.add("hidden");
+        document.getElementById("dataContent").classList.add("hidden");
         document
           .getElementById("nodeLiffIdErrorMessage")
           .classList.remove("hidden");
@@ -35,7 +35,7 @@ function initializeLiffOrDie(myLiffId) {
   if (!myLiffId) {
     document.getElementById("liffAppContent").classList.add("hidden");
     document.getElementById("liffAppLogin").classList.add("hidden");
-    document.getElementById("body-content").classList.add("hidden");
+    document.getElementById("dataContent").classList.add("hidden");
     document.getElementById("liffIdErrorMessage").classList.remove("hidden");
   } else {
     initializeLiff(myLiffId);
@@ -77,10 +77,10 @@ function initializeApp() {
     document.getElementById("liffLoginBtn").classList.add("hidden");
     document.getElementById("liffAppContent").classList.remove("hidden");
     document.getElementById("liffLogoutBtn").classList.remove("hidden");
-    document.getElementById("body-content").classList.remove("hidden");
+    document.getElementById("dataContent").classList.remove("hidden");
   } else {
     document.getElementById("liffLogoutBtn").classList.add("hidden");
-    document.getElementById("body-content").classList.add("hidden");
+    document.getElementById("dataContent").classList.add("hidden");
     document.getElementById("liffAppContent").classList.add("hidden");
     document.getElementById("liffLoginBtn").classList.remove("hidden");
   }
